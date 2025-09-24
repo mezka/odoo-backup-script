@@ -23,8 +23,8 @@ SQL_FILE="$DB_BK_DIR/db-$DATE.sql"
 pg_dump "$DB_NAME" > "$SQL_FILE"
 
 # --- 2) compress with tar+gzip
-TAR_FILE="$DB_BK_DIR/db-$DATE.tar.gz"
-tar -czf "$TAR_FILE" -C "$DB_BK_DIR" "$(basename "$SQL_FILE")"
+TAR_DB_FILE="$DB_BK_DIR/db-$DATE.tar.gz"
+tar -czf "$TAR_DB_FILE" -C "$DB_BK_DIR" "$(basename "$SQL_FILE")"
 
 # --- 3) remove raw .sql after packaging
 rm -f "$SQL_FILE"
