@@ -19,8 +19,10 @@ La idea del script es que sea ejecutado vía cron, configurando su programación
 
 Ejemplo (one-liner): agregar el script a `crontab` para que se ejecute todos los días a las 23 horas:
 
+(CUIDADO: se esta asumiendo que el script esta ubicado en `/home/odoo-backup-script/backup.sh`)
+
 ```
-(crontab -l; 0 23 * * * /home/odoo-backup-script/backup.sh")
+(crontab -l; echo "0 23 * * * /home/odoo-backup-script/backup.sh") | crontab -
 ```
 
 ## CHANGELOG
