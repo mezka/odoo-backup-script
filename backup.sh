@@ -11,8 +11,8 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DB_BK_DIR="$SCRIPT_DIR/db_backups"
 FS_BK_DIR="$SCRIPT_DIR/fs_backups"
 
-DB_NAME="mesquita"
-RETENTION_DAYS=30
+DB_NAME="mesquita-prod-18.0"
+RETENTION_DAYS=14
 FILESTORE_DIR="$HOME/produccion/mesquita-18.0/data/filestore/mesquita-prod-18.0"
 
 # make sure backup dirs exist
