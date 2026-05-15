@@ -27,6 +27,10 @@ Ejemplo (one-liner): agregar el script a `crontab` para que se ejecute todos los
 
 ## CHANGELOG
 
+### 15/05/26
+
+Agregando loggin basico de pasos generales para tener logs más precisos
+
 ### 24/09/25
 
 Creacion de repositorio publico en [https://github.com/mezka/odoo-backup-script](https://github.com/mezka/odoo-backup-script) para poder descargar via `git` con `ssh` (usando agent forwarding e.g. `ssh -A user@your-vps`) o `wget`.

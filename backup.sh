@@ -26,6 +26,8 @@ pg_dump "$DB_NAME" > "$SQL_FILE"
 TAR_DB_FILE="$DB_BK_DIR/db-$DATE.tar.gz"
 tar -czf "$TAR_DB_FILE" -C "$DB_BK_DIR" "$(basename "$SQL_FILE")"
 
+echo "[$(date '+%F %T')] Backup DB creado: $TAR_DB_FILE"
+
 # --- 3) remove raw .sql after packaging
 rm -f "$SQL_FILE"
 
@@ -33,10 +35,14 @@ rm -f "$SQL_FILE"
 if [ -d "$FILESTORE_DIR" ]; then
     TAR_FS_FILE="$FS_BK_DIR/filestore-$DATE.tar.gz"
     tar -czf "$TAR_FS_FILE" -C "$(dirname "$FILESTORE_DIR")" "$(basename "$FILESTORE_DIR")"
+
+    echo "[$(date '+%F %T')] Backup filestore creado: $TAR_FS_FILE"
 else
-    echo "Advertencia: no se encontró el filestore en $FILESTORE_DIR" >&2
+    echo "[$(date '+%F %T')] Advertencia: no se encontró el filestore en $FILESTORE_DIR" >&2
 fi
 
 # --- 5) rotate: delete archives older than RETENTION_DAYS
+echo "[$(date '+%F %T')] Iniciando rotación de backups. Se eliminarán archivos con más de $RETENTION_DAYS días."
+
 find "$DB_BK_DIR" -type f -name "db-*.tar.gz" -mtime +"$RETENTION_DAYS" -print -delete
 find "$FS_BK_DIR" -type f -name "filestore-*.tar.gz" -mtime +"$RETENTION_DAYS" -print -delete
